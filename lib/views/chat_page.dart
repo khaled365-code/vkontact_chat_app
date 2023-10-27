@@ -10,6 +10,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quickalert/quickalert.dart';
 
+import '../widgets/custom_send_text_field.dart';
+
 
 class Chatscreen extends StatelessWidget {
 
@@ -75,29 +77,75 @@ class Chatscreen extends StatelessWidget {
           Expanded(
             child: BlocBuilder<ChatCubit, ChatState>(
               builder: (context, state) {
-                List<Messagemodel> messageList=BlocProvider.of<ChatCubit>(context).messageList;
+                List<Messagemodel> messageList =
+                    BlocProvider.of<ChatCubit>(context).messageList;
                 return ListView.builder(
-
                   controller: scrollController,
-                  itemBuilder:
-                      (context, index)
-                  {
-                    return messageList[index].id == email ? Chatbubble(
-                      message: messageList[index],) : ChatbubbleforFriend(
-                        message: messageList[index]);
+                  itemBuilder: (context, index) {
+                    return messageList[index].id == email
+                        ? Chatbubble(
+                            message: messageList[index],
+                          )
+                        : ChatbubbleforFriend(message: messageList[index]);
                   },
-
                   itemCount: messageList.length,
                 );
               },
             ),
           ),
-         SingleChildScrollView(
+          SingleChildScrollView(
            child: Padding(
              padding: const EdgeInsets.only(bottom: 10,left: 12,right: 8,top: 10),
              child: Row(
                   children: [
-                    Container(
+                  CustomSendChatField(
+                    controller: sendText,
+                    maxLines: 30,
+                    hintText: 'Let\'s Gooooooo!!!!!',
+                    onSubmitted: (value) {
+                      BlocProvider.of<ChatCubit>(context)
+                          .sendMessages(value, email.toString());
+                      sendText.clear();
+                      scrollController.animateTo(
+                          scrollController.position.maxScrollExtent,
+                          duration: Duration(seconds: 1),
+                          curve: Curves.easeIn);
+                    },
+                  ),
+                  SizedBox(width: 5,),
+                    InkWell(
+                    onTap: () {
+                      BlocProvider.of<ChatCubit>(context)
+                          .sendMessages(sendText.text, email.toString());
+                      sendText.clear();
+                      scrollController.animateTo(
+                          scrollController.position.maxScrollExtent,
+                          duration: Duration(seconds: 1),
+                          curve: Curves.easeIn);
+                    },
+                    child: Icon(
+                      Icons.arrow_circle_up_outlined,
+                      color: Colors.black,
+                      size: 50,
+                    ),
+                  ),
+                ],
+                ),
+           ),
+         ),
+
+
+        ],
+      ),
+    );
+  }
+}
+
+/*
+
+
+
+Container(
                       width: 285,
                       height: 60,
                       child: TextField(
@@ -128,31 +176,4 @@ class Chatscreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(20))),
                   ),
                     ),
-                    SizedBox(width: 5,),
-                    InkWell(
-                    onTap: () {
-                      BlocProvider.of<ChatCubit>(context)
-                          .sendMessages(sendText.text, email.toString());
-                      sendText.clear();
-                      scrollController.animateTo(
-                          scrollController.position.maxScrollExtent,
-                          duration: Duration(seconds: 1),
-                          curve: Curves.easeIn);
-                    },
-                    child: Icon(
-                      Icons.arrow_circle_up_outlined,
-                      color: Colors.black,
-                      size: 50,
-                    ),
-                  ),
-                ],
-                ),
-           ),
-         ),
-
-
-        ],
-      ),
-    );
-  }
-}
+ */
