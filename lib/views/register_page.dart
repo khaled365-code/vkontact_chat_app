@@ -5,6 +5,8 @@ import 'package:firebase_chat_app/cubits/eye_register_cubit/eye_register_cubit.d
 import 'package:firebase_chat_app/views/chat_page.dart';
 import 'package:firebase_chat_app/views/signin_page.dart';
 import 'package:firebase_chat_app/widgets/custom_button.dart';
+import 'package:firebase_chat_app/widgets/custom_register_password_text_field.dart';
+import 'package:firebase_chat_app/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -78,90 +80,16 @@ class Registerscreen extends StatelessWidget {
                         SizedBox(
                           height: 10,
                         ),
-                        TextFormField(
-                          controller: emailText,
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'This field is required';
-                            } else if (value.length < 5) {
-                              return 'Email address is incorrect ';
-                            }
-                            return null;
-                          },
-                          style: TextStyle(color: Colors.black, fontSize: 18),
-                          keyboardType: TextInputType.emailAddress,
-                          decoration: InputDecoration(
-                              hintText: 'Email',
-                              hintStyle: TextStyle(
-                                color: Colors.black.withOpacity(.5),
-                                fontSize: 18,
-                              ),
-                              fillColor: Colors.grey[100],
-                              filled: true,
-                              suffixIcon: Icon(
-                                Icons.email,
-                                color: Colors.black,
-                                size: 25,
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Colors.white,
-                                  )),
-                              focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Colors.white,
-                                  ))
-                              ),
-                        ),
+                        CustomTextField(
+                            hintText: 'Email',
+                            controller: emailText,
+                            icon: Icons.email),
                         SizedBox(
                           height: 10,
                         ),
-                        BlocBuilder<EyeRegisterCubit, EyeRegisterState>(
-                          builder: (context, state) {
-                            return TextFormField(
-                              controller: passwordText,
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'This field is required';
-                                }
-                                return null;
-                              },
-                              style: TextStyle(color: Colors.black, fontSize: 18),
-                              obscureText: eyeCubit.obsecureText,
-                              keyboardType: TextInputType.visiblePassword,
-                              decoration: InputDecoration(
-                                  hintText: 'Password',
-                                  hintStyle: TextStyle(
-                                    color: Colors.black.withOpacity(.5),
-                                    fontSize: 18,
-                                  ),
-                                  fillColor: Colors.grey[100],
-                                  filled: true,
-                                  suffixIcon: InkWell(
-                                      onTap: () {
-                                        eyeCubit.eyeRegisterChange();
-                                      },
-                                      child: eyeCubit.eyeDissapear ? Icon(
-                                        Icons.visibility_off,
-                                        color: Colors.black,
-                                        size: 25,
-                                      ) : Icon(
-                                        Icons.remove_red_eye,
-                                        color: Colors.black,
-                                        size: 25,
-                                      )),
-                                  enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Colors.white,
-                                      )),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Colors.white,
-                                      ))
-                                  ),
-                            );
-                          },
-                        ),
+                        CustomRegisterPasswordField(
+                            passwordController: passwordText,
+                            eyeCubit: eyeCubit),
                         SizedBox(
                           height: 10,
                         ),
