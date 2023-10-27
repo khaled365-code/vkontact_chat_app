@@ -40,7 +40,7 @@ class Chatscreen extends StatelessWidget {
                   QuickAlert.show(
                       context: context,
                       type: QuickAlertType.confirm,
-                      text: 'Are you sure?                                Do you want to logout',
+                      text: 'Are you sure?\nDo you want to logout',
                       cancelBtnText: 'Cancel',
                       confirmBtnText: 'yes',
                       confirmBtnColor: Colors.white,

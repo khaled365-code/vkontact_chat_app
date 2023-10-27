@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_chat_app/constants.dart';
+import 'package:firebase_chat_app/cubits/auth_cubit/auth_cubit.dart';
 import 'package:firebase_chat_app/cubits/eye_register_cubit/eye_register_cubit.dart';
-import 'package:firebase_chat_app/cubits/register_cubit/register_cubit.dart';
 import 'package:firebase_chat_app/views/chat_page.dart';
 import 'package:firebase_chat_app/views/signin_page.dart';
 import 'package:firebase_chat_app/widgets/custom_button.dart';
@@ -31,7 +31,7 @@ class Registerscreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
     var eyeCubit=BlocProvider.of<EyeRegisterCubit>(context);
-    return BlocConsumer<RegisterCubit, RegisterState>(
+    return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is RegisterLoading) {
           isLoading = true;
@@ -169,7 +169,7 @@ class Registerscreen extends StatelessWidget {
                             text: 'Register',
                             ontap: () async {
                               if (registerFormKey.currentState!.validate()) {
-                                BlocProvider.of<RegisterCubit>(context)
+                                BlocProvider.of<AuthCubit>(context)
                                     .registerNewAccount(emailText: emailText,
                                     passwordText: passwordText);
 

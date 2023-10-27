@@ -1,9 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_chat_app/cubits/auth_cubit/auth_cubit.dart';
 import 'package:firebase_chat_app/cubits/chat_cubit/chat_cubit.dart';
 import 'package:firebase_chat_app/cubits/eye_login_cubit/eye_login_cubit.dart';
 import 'package:firebase_chat_app/cubits/eye_register_cubit/eye_register_cubit.dart';
-import 'package:firebase_chat_app/cubits/login_cubit/login_cubit.dart';
-import 'package:firebase_chat_app/cubits/register_cubit/register_cubit.dart';
 import 'package:firebase_chat_app/views/chat_page.dart';
 import 'package:firebase_chat_app/views/register_page.dart';
 import 'package:firebase_chat_app/views/signin_page.dart';
@@ -39,8 +38,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => LoginCubit(),),
-        BlocProvider(create: (context) => RegisterCubit(),),
+        BlocProvider(create: (context) => AuthCubit(),),
         BlocProvider(create: (context) => EyeLoginCubit(),),
         BlocProvider(create: (context) => EyeRegisterCubit(),),
         BlocProvider(create: (context) => ChatCubit(),),
