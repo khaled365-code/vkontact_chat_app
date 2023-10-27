@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 
 
 
-class MessageItem extends StatelessWidget {  @override
+class MessageItem extends StatelessWidget {
+  const MessageItem({super.key});
+  @override
   Widget build(BuildContext context)
   {
    return Row(
@@ -17,8 +19,8 @@ class MessageItem extends StatelessWidget {  @override
              child: Icon(Icons.person,color: Colors.grey[300],size: 40,)
          ),
        ),
-       SizedBox(width: 20,),
-       Text('Katerina Zaharova',style: TextStyle(color: Colors.black,fontSize: 20),),
+       const SizedBox(width: 20,),
+       const Text('Katerina Zaharova',style: TextStyle(color: Colors.black,fontSize: 20),),
 
 
      ],

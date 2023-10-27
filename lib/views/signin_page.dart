@@ -1,4 +1,3 @@
-import 'package:firebase_chat_app/constants.dart';
 import 'package:firebase_chat_app/cubits/chat_cubit/chat_cubit.dart';
 import 'package:firebase_chat_app/cubits/eye_login_cubit/eye_login_cubit.dart';
 import 'package:firebase_chat_app/views/chat_page.dart';
@@ -7,7 +6,6 @@ import 'package:firebase_chat_app/widgets/custom_button.dart';
 import 'package:firebase_chat_app/widgets/custom_login_password_text_field.dart';
 import 'package:firebase_chat_app/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:quickalert/quickalert.dart';
@@ -19,11 +17,11 @@ class Signinscreen extends StatelessWidget {
 
 
   static String id = 'loginPage';
-  var emailText = TextEditingController();
+  final emailText = TextEditingController();
 
-  var passwordText = TextEditingController();
+  final passwordText = TextEditingController();
 
-  var loginFormKey = GlobalKey<FormState>();
+  final loginFormKey = GlobalKey<FormState>();
 
   bool eyeDissapear = true;
   bool textSecured = true;
@@ -43,14 +41,14 @@ class Signinscreen extends StatelessWidget {
                 body: SafeArea(
                     child:SingleChildScrollView(
                       child: Padding(
-                          padding:  EdgeInsets.only(left: 20,right:20,top: 30),
+                          padding:  const EdgeInsets.only(left: 20,right:20,top: 30),
                           child: Form(
                             key: loginFormKey,
                             child: Column(
 
                               children: [
-                                 Center(child: Icon(Icons.message,size: 80,)),
-                                SizedBox(
+                                 const Center(child: Icon(Icons.message,size: 80,)),
+                                const SizedBox(
                                   height: 40,
                                 ),
                                 Text(
@@ -60,20 +58,20 @@ class Signinscreen extends StatelessWidget {
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 CustomTextField(
                                     hintText: 'Email',
                                     controller: emailText,
                                     icon: Icons.email),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 CustomLoginPasswordField(
                                     controller: passwordText,
                                     eyeCubit: eyeCubit),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 Custombutton(
@@ -86,18 +84,18 @@ class Signinscreen extends StatelessWidget {
 
                                       }
                                     }),
-                                SizedBox(
+                                const SizedBox(
                                   height: 16,
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text(
+                                    const Text(
                                       'don\'t have an account ? ',
                                       style: TextStyle(
                                           color: Colors.black, fontSize: 18),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 5,
                                     ),
                                     InkWell(

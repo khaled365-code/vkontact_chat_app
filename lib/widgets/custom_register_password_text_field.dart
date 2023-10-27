@@ -1,5 +1,4 @@
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -27,7 +26,7 @@ class CustomRegisterPasswordField extends StatelessWidget {
             }
             return null;
           },
-          style: TextStyle(color: Colors.black, fontSize: 18),
+          style: const TextStyle(color: Colors.black, fontSize: 18),
           obscureText: eyeCubit.obsecureText,
           keyboardType: TextInputType.visiblePassword,
           decoration: InputDecoration(
@@ -42,20 +41,20 @@ class CustomRegisterPasswordField extends StatelessWidget {
                   onTap: () {
                     eyeCubit.eyeRegisterChange();
                   },
-                  child: eyeCubit.eyeDissapear ? Icon(
+                  child: eyeCubit.eyeDissapear ? const Icon(
                     Icons.visibility_off,
                     color: Colors.black,
                     size: 25,
-                  ) : Icon(
+                  ) : const Icon(
                     Icons.remove_red_eye,
                     color: Colors.black,
                     size: 25,
                   )),
-              enabledBorder: OutlineInputBorder(
+              enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(
                     color: Colors.white,
                   )),
-              focusedBorder: OutlineInputBorder(
+              focusedBorder: const OutlineInputBorder(
                   borderSide: BorderSide(
                     color: Colors.white,
                   ))

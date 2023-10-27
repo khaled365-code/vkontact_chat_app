@@ -21,7 +21,7 @@ class CustomLoginPasswordField extends StatelessWidget {
       builder: (context, state) {
         return TextFormField(
           controller: controller,
-          style: TextStyle(
+          style: const TextStyle(
               color: Colors.black, fontSize: 18),
           validator: (value) {
             if (value!.isEmpty) {
@@ -44,21 +44,21 @@ class CustomLoginPasswordField extends StatelessWidget {
                     eyeCubit.eyeLoginChange();
                   },
                   child: eyeCubit.eyeDissapear
-                      ? Icon(
+                      ? const Icon(
                     Icons.visibility_off,
                     color: Colors.black,
                     size: 25,
                   )
-                      : Icon(
+                      : const Icon(
                     Icons.remove_red_eye,
                     color: Colors.black,
                     size: 25,
                   )),
-              enabledBorder: OutlineInputBorder(
+              enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(
                     color: Colors.white,
                   )),
-              focusedBorder: OutlineInputBorder(
+              focusedBorder: const OutlineInputBorder(
                   borderSide: BorderSide(
                     color: Colors.white,
                   ))

@@ -2,7 +2,6 @@ import 'package:firebase_chat_app/views/signin_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../constants.dart';
 
 
 
@@ -39,7 +38,7 @@ class _SplashscreenState extends State<Splashscreen> {
           statusBarColor: Colors.grey[200],
         ),
       ),
-      body: Column(
+      body: const Column(
         children: [
           Padding(
             padding: EdgeInsetsDirectional.only(top: 220),
@@ -56,7 +55,7 @@ class _SplashscreenState extends State<Splashscreen> {
 
   getDelayed() async
   {
-    await Future.delayed(Duration(seconds: 5));
+    await Future.delayed(const Duration(seconds: 5));
     Navigator.pushNamed(context, Signinscreen.id );
   }
 }

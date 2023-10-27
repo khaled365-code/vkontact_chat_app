@@ -8,7 +8,7 @@ class Chatbubble extends StatelessWidget {
 
 
   final Messagemodel message;
-  Chatbubble({required this.message});
+  const Chatbubble({required this.message});
 
 
   @override
@@ -17,9 +17,9 @@ class Chatbubble extends StatelessWidget {
     return Align(
       alignment: Alignment.centerRight,
       child: Container(
-        margin: EdgeInsetsDirectional.only( start: 20,top: 10,end: 20),
-        padding: EdgeInsetsDirectional.only(start: 15,top: 30,bottom: 30,end: 15) ,
-        decoration: BoxDecoration(
+        margin: const EdgeInsetsDirectional.only( start: 20,top: 10,end: 20),
+        padding: const EdgeInsetsDirectional.only(start: 15,top: 30,bottom: 30,end: 15) ,
+        decoration: const BoxDecoration(
           color: Color(0xff858585),
           borderRadius: BorderRadius.only(
             topLeft:Radius.circular(30),
@@ -28,7 +28,7 @@ class Chatbubble extends StatelessWidget {
           )
 
         ),
-        child: Text(message.messageText,style: TextStyle(color: Colors.white,fontSize: 18),),
+        child: Text(message.messageText,style: const TextStyle(color: Colors.white,fontSize: 18),),
 
       ),
     );
@@ -50,9 +50,9 @@ class ChatbubbleforFriend extends StatelessWidget {
     return Align(
       alignment: Alignment.centerLeft,
       child: Container(
-        margin: EdgeInsetsDirectional.only( start: 20,top: 10,end: 20),
-        padding: EdgeInsetsDirectional.only(start: 15,top: 30,bottom: 30,end: 15) ,
-        decoration: BoxDecoration(
+        margin: const  EdgeInsetsDirectional.only( start: 20,top: 10,end: 20),
+        padding: const EdgeInsetsDirectional.only(start: 15,top: 30,bottom: 30,end: 15) ,
+        decoration: const BoxDecoration(
             color: Color(0xff58A25B),
             borderRadius: BorderRadius.only(
               topLeft:Radius.circular(30),
@@ -61,7 +61,7 @@ class ChatbubbleforFriend extends StatelessWidget {
             )
 
         ),
-        child: Text(message.messageText,style: TextStyle(color: Colors.white,fontSize: 18),),
+        child: Text(message.messageText,style: const TextStyle(color: Colors.white,fontSize: 18),),
 
       ),
     );

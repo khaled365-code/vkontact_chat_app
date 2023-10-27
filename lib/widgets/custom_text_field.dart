@@ -1,5 +1,4 @@
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -9,7 +8,7 @@ class CustomTextField extends StatelessWidget {
   final String hintText;
   final IconData icon;
 
-   CustomTextField({super.key, required this.hintText,required this.controller, required this.icon});
+   const CustomTextField({super.key, required this.hintText,required this.controller, required this.icon});
   @override
   Widget build(BuildContext context)
   {
@@ -21,7 +20,7 @@ class CustomTextField extends StatelessWidget {
         }
         return null;
       },
-      style: TextStyle(color: Colors.black, fontSize: 18),
+      style: const TextStyle(color: Colors.black, fontSize: 18),
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
           hintText: hintText,
@@ -36,11 +35,11 @@ class CustomTextField extends StatelessWidget {
             color: Colors.black,
             size: 25,
           ),
-          enabledBorder: OutlineInputBorder(
+          enabledBorder: const OutlineInputBorder(
               borderSide: BorderSide(
                 color: Colors.white,
               )),
-          focusedBorder: OutlineInputBorder(
+          focusedBorder: const OutlineInputBorder(
               borderSide: BorderSide(
                 color: Colors.white,
               ))

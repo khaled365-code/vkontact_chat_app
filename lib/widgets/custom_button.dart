@@ -9,7 +9,7 @@ class Custombutton extends StatelessWidget
 {
 
   final String text;
-  Custombutton({required this.text, required this.ontap});
+  Custombutton({super.key, required this.text, required this.ontap});
 
   VoidCallback ontap;
 

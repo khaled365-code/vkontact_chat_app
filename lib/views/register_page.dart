@@ -1,14 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_chat_app/blocs/auth_bloc/auth_bloc.dart';
-import 'package:firebase_chat_app/constants.dart';
 import 'package:firebase_chat_app/cubits/eye_register_cubit/eye_register_cubit.dart';
 import 'package:firebase_chat_app/views/chat_page.dart';
-import 'package:firebase_chat_app/views/signin_page.dart';
 import 'package:firebase_chat_app/widgets/custom_button.dart';
 import 'package:firebase_chat_app/widgets/custom_register_password_text_field.dart';
 import 'package:firebase_chat_app/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:quickalert/models/quickalert_type.dart';
@@ -20,11 +16,11 @@ class Registerscreen extends StatelessWidget {
 
   static String id = 'registerpage';
 
-  var emailText = TextEditingController();
+  final emailText = TextEditingController();
 
-  var passwordText = TextEditingController();
+  final passwordText = TextEditingController();
 
-  var registerFormKey = GlobalKey<FormState>();
+  final registerFormKey = GlobalKey<FormState>();
 
   bool isLoading = false;
 
@@ -66,8 +62,8 @@ class Registerscreen extends StatelessWidget {
                     key: registerFormKey,
                     child: Column(
                       children: [
-                        Center(child: Icon(Icons.message,size: 80,)),
-                        SizedBox(
+                        const Center(child: Icon(Icons.message,size: 80,)),
+                        const SizedBox(
                           height: 40,
                         ),
                         Text(
@@ -77,20 +73,20 @@ class Registerscreen extends StatelessWidget {
                               fontSize: 16,
                               fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         CustomTextField(
                             hintText: 'Email',
                             controller: emailText,
                             icon: Icons.email),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         CustomRegisterPasswordField(
                             passwordController: passwordText,
                             eyeCubit: eyeCubit),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Custombutton(
@@ -102,17 +98,17 @@ class Registerscreen extends StatelessWidget {
 
                               }
                             }),
-                        SizedBox(
+                        const SizedBox(
                           height: 16,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
+                            const Text(
                               'Already a member ? ',
                               style: TextStyle(color: Colors.black, fontSize: 18),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 5,
                             ),
                             InkWell(

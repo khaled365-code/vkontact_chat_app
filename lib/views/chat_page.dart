@@ -1,6 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_chat_app/constants.dart';
 import 'package:firebase_chat_app/cubits/chat_cubit/chat_cubit.dart';
 import 'package:firebase_chat_app/models/message_model.dart';
 import 'package:firebase_chat_app/views/signin_page.dart';
@@ -31,7 +31,7 @@ class Chatscreen extends StatelessWidget {
         backgroundColor: Colors.black,
         title: Text(
           email.toString(),
-          style: TextStyle(color: Colors.white, fontSize: 18),
+          style: const TextStyle(color: Colors.white, fontSize: 18),
         ),
         centerTitle: true,
         actions: [
@@ -56,19 +56,19 @@ class Chatscreen extends StatelessWidget {
                       onCancelBtnTap: () {
                         Navigator.pop(context);
                       },
-                      onConfirmBtnTap: () async {
-                        await FirebaseAuth.instance.signOut();
+                      onConfirmBtnTap: ()  {
+                         FirebaseAuth.instance.signOut();
                         Navigator.pushNamed(context, Signinscreen.id);
                       });
                 },
-                child: Icon(
+                child: const Icon(
                   Icons.logout,
                   size: 30,
                   color: Colors.white,
                 )),
           ),
         ],
-        systemOverlayStyle: SystemUiOverlayStyle(
+        systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarColor:  Colors.black,
         ),
       ),
@@ -89,6 +89,7 @@ class Chatscreen extends StatelessWidget {
                         : ChatbubbleforFriend(message: messageList[index]);
                   },
                   itemCount: messageList.length,
+
                 );
               },
             ),
@@ -105,14 +106,16 @@ class Chatscreen extends StatelessWidget {
                     onSubmitted: (value) {
                       BlocProvider.of<ChatCubit>(context)
                           .sendMessages(value, email.toString());
+                      Timer(const Duration(milliseconds: 500),
+                              () => scrollController.jumpTo(scrollController.position.maxScrollExtent));
                       sendText.clear();
-                      scrollController.animateTo(
-                          scrollController.position.maxScrollExtent,
-                          duration: Duration(seconds: 1),
-                          curve: Curves.easeIn);
+                      // scrollController.animateTo(
+                      //     scrollController.position.maxScrollExtent,
+                      //     duration: Duration(milliseconds: 0),
+                      //     curve: Curves.ease);
                     },
                   ),
-                  SizedBox(width: 5,),
+                  const SizedBox(width: 5,),
                     InkWell(
                     onTap: () {
                       BlocProvider.of<ChatCubit>(context)
@@ -120,10 +123,10 @@ class Chatscreen extends StatelessWidget {
                       sendText.clear();
                       scrollController.animateTo(
                           scrollController.position.maxScrollExtent,
-                          duration: Duration(seconds: 1),
+                          duration: const Duration(seconds: 1),
                           curve: Curves.easeIn);
                     },
-                    child: Icon(
+                    child: const Icon(
                       Icons.arrow_circle_up_outlined,
                       color: Colors.black,
                       size: 50,
@@ -141,39 +144,4 @@ class Chatscreen extends StatelessWidget {
   }
 }
 
-/*
 
-
-
-Container(
-                      width: 285,
-                      height: 60,
-                      child: TextField(
-                        controller: sendText,
-                        maxLines: 30,
-                        onSubmitted: (value) {
-                          BlocProvider.of<ChatCubit>(context).sendMessages(value, email.toString());
-                          sendText.clear();
-                          scrollController.animateTo(
-                              scrollController.position.maxScrollExtent,
-                              duration: Duration(seconds: 1),
-                              curve: Curves.easeIn);
-                          },
-                        decoration: InputDecoration(
-                          hintText: 'Let\'s Gooooooo!!!!!',
-                          hintStyle: TextStyle(color: Color(0xff737373),fontWeight: FontWeight.bold),
-                            fillColor: Colors.grey[100],
-                            filled: true,
-                          enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.white,
-                              ),
-                              borderRadius: BorderRadius.circular(20)),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.white,
-                              ),
-                              borderRadius: BorderRadius.circular(20))),
-                  ),
-                    ),
- */
