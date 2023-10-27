@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_chat_app/cubits/auth_cubit/auth_cubit.dart';
+import 'package:firebase_chat_app/bloc_observer.dart';
+import 'package:firebase_chat_app/blocs/auth_bloc/auth_bloc.dart';
 import 'package:firebase_chat_app/cubits/chat_cubit/chat_cubit.dart';
 import 'package:firebase_chat_app/cubits/eye_login_cubit/eye_login_cubit.dart';
 import 'package:firebase_chat_app/cubits/eye_register_cubit/eye_register_cubit.dart';
@@ -27,7 +28,15 @@ void main() async {
     {
       isLogin=true;
     }
-  runApp(const MyApp());
+
+  BlocOverrides.runZoned(()
+  {
+    runApp(const MyApp());
+  },
+    blocObserver: SimpleBlocObserver()
+  );
+
+
 }
 
 class MyApp extends StatelessWidget {
@@ -38,7 +47,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => AuthCubit(),),
+        BlocProvider(create: (context) => AuthBloc(),),
         BlocProvider(create: (context) => EyeLoginCubit(),),
         BlocProvider(create: (context) => EyeRegisterCubit(),),
         BlocProvider(create: (context) => ChatCubit(),),

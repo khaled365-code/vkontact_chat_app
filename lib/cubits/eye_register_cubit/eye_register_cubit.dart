@@ -17,4 +17,5 @@ class EyeRegisterCubit extends Cubit<EyeRegisterState> {
 
 
   }
+
 }

@@ -1,5 +1,4 @@
 import 'package:firebase_chat_app/constants.dart';
-import 'package:firebase_chat_app/cubits/auth_cubit/auth_cubit.dart';
 import 'package:firebase_chat_app/cubits/chat_cubit/chat_cubit.dart';
 import 'package:firebase_chat_app/cubits/eye_login_cubit/eye_login_cubit.dart';
 import 'package:firebase_chat_app/views/chat_page.dart';
@@ -10,6 +9,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:quickalert/quickalert.dart';
+
+import '../blocs/auth_bloc/auth_bloc.dart';
 
 
 class Signinscreen extends StatelessWidget {
@@ -30,7 +31,7 @@ class Signinscreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var eyeCubit = BlocProvider.of<EyeLoginCubit>(context);
-    return BlocConsumer<AuthCubit, AuthState>(
+    return BlocConsumer<AuthBloc, AuthBlocState>(
       builder: (context, state) {
         return ModalProgressHUD(
             inAsyncCall: isLoading,
@@ -152,8 +153,9 @@ class Signinscreen extends StatelessWidget {
                                     text: 'Sign in',
                                     ontap: () {
                                       if (loginFormKey.currentState!.validate()) {
-                                        BlocProvider.of<AuthCubit>(context)
-                                            .loginToAccount(emailText, passwordText);
+                                        BlocProvider.of<AuthBloc>(context).add(
+                                          LoginPressed(email: emailText, password: passwordText)
+                                        );
 
                                       }
                                     }),

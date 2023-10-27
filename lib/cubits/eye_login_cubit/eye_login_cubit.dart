@@ -15,6 +15,5 @@ class EyeLoginCubit extends Cubit<EyeLoginState> {
     obsecureText=!obsecureText;
     emit(EyeLoginShow());
 
-
   }
 }
